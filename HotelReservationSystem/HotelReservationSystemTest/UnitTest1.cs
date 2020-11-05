@@ -11,7 +11,7 @@ namespace HotelReservationSystemTest
         {
             Hotel hotel = new Hotel(HotelTypes.LAKEWOOD);
             double expectedRate = 110;
-            Assert.AreEqual(expectedRate, hotel.RATE);
+            Assert.AreEqual(expectedRate, hotel.WEEKDAY_RATE);
         }
         [TestMethod]
         public void CheapestHotelTest()
