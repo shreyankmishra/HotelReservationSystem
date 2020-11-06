@@ -14,8 +14,15 @@ namespace HotelReservationSystem
             double LakeWoodRate = LakeWood.FindTotalCost(startDate, endDate);
             double BridgeWoodRate = BridgeWood.FindTotalCost(startDate, endDate);
             double RidgeWoodRate = RidgeWood.FindTotalCost(startDate, endDate);
-
             double MinRate = Math.Min(LakeWoodRate, Math.Min(BridgeWoodRate, RidgeWoodRate));
+            if (MinRate == LakeWoodRate && MinRate == BridgeWoodRate && MinRate == RidgeWoodRate)
+                return HotelTypes.RIDGEWOOD;
+            if (MinRate == LakeWoodRate && MinRate == BridgeWoodRate)
+                return HotelTypes.BRIDGEWOOD;
+            if (MinRate == BridgeWoodRate && MinRate == RidgeWoodRate)
+                return HotelTypes.RIDGEWOOD;
+            if (MinRate == LakeWoodRate && MinRate == BridgeWoodRate)
+                return HotelTypes.RIDGEWOOD;
             if (MinRate == LakeWoodRate)
                 return HotelTypes.LAKEWOOD;
             if (MinRate == BridgeWoodRate)

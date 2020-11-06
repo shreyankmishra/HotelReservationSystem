@@ -14,19 +14,11 @@ namespace HotelReservationSystemTest
             Assert.AreEqual(expectedRate, hotel.WEEKDAY_RATE);
         }
         [TestMethod]
-        public void CheapestHotelTest()
-        {
-            HotelService service = new HotelService();
-            HotelTypes hotel = service.FindCheapestHotel("2020-01-01", "2020-01-04");
-            HotelTypes expected = HotelTypes.LAKEWOOD;
-            Assert.AreEqual(hotel, expected);
-        }
-        [TestMethod]
-        public void CheapestHotelAfterWeekdayAndWeekendRatesTest()
+        public void CheapestBestRatedHotelTest()
         {
             HotelService service = new HotelService();
             HotelTypes hotel = service.FindCheapestHotel("2020-09-11", "2020-09-12");
-            HotelTypes expected = HotelTypes.LAKEWOOD;
+            HotelTypes expected = HotelTypes.BRIDGEWOOD;
             Assert.AreEqual(hotel, expected);
         }
     }
