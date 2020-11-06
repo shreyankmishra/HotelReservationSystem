@@ -9,7 +9,7 @@ namespace HotelReservationSystemTest
         [TestMethod]
         public void AddingHotelTest()
         {
-            Hotel hotel = new Hotel(HotelTypes.LAKEWOOD);
+            Hotel hotel = new Hotel(HotelTypes.LAKEWOOD, CustomerType.NORMAL);
             double expectedRate = 110;
             Assert.AreEqual(expectedRate, hotel.WEEKDAY_RATE);
         }

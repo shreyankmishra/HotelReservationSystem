@@ -10,28 +10,73 @@ namespace HotelReservationSystem
         public double WEEKDAY_RATE { get; }
         public double WEEKEND_RATE { get; }
         public double RATING { get; }
-        public Hotel(HotelTypes hotelType)
+        public Hotel(HotelTypes hotelType, CustomerType customerType)
         {
             this.type = hotelType;
             try
             {
                 if (hotelType.Equals(HotelTypes.LAKEWOOD))
                 {
-                    this.WEEKDAY_RATE = 110;
-                    this.WEEKEND_RATE = 90;
                     this.RATING = 3;
+                    try
+                    {
+                        if (customerType.Equals(CustomerType.NORMAL))
+                        {
+                            this.WEEKDAY_RATE = 110;
+                            this.WEEKEND_RATE = 90;
+                        }
+                        if (customerType.Equals(CustomerType.REWARD))
+                        {
+                            this.WEEKDAY_RATE = 80;
+                            this.WEEKEND_RATE = 80;
+                        }
+                    }
+                    catch (HotelReservationSystemException)
+                    {
+                        throw new HotelReservationSystemException(HotelReservationSystemException.ExceptionType.INVALID_CUSTOMER_TYPE, "Invalid customer type");
+                    }
                 }
                 if (hotelType.Equals(HotelTypes.BRIDGEWOOD))
                 {
-                    this.WEEKDAY_RATE = 150;
-                    this.WEEKEND_RATE = 50;
                     this.RATING = 4;
+                    try
+                    {
+                        if (customerType.Equals(CustomerType.NORMAL))
+                        {
+                            this.WEEKDAY_RATE = 150;
+                            this.WEEKEND_RATE = 50;
+                        }
+                        if (customerType.Equals(CustomerType.REWARD))
+                        {
+                            this.WEEKDAY_RATE = 110;
+                            this.WEEKEND_RATE = 50;
+                        }
+                    }
+                    catch (HotelReservationSystemException)
+                    {
+                        throw new HotelReservationSystemException(HotelReservationSystemException.ExceptionType.INVALID_CUSTOMER_TYPE, "Invalid customer type");
+                    }
                 }
                 if (hotelType.Equals(HotelTypes.RIDGEWOOD))
                 {
-                    this.WEEKDAY_RATE = 220;
-                    this.WEEKEND_RATE = 150;
                     this.RATING = 5;
+                    try
+                    {
+                        if (customerType.Equals(CustomerType.NORMAL))
+                        {
+                            this.WEEKDAY_RATE = 220;
+                            this.WEEKEND_RATE = 150;
+                        }
+                        if (customerType.Equals(CustomerType.REWARD))
+                        {
+                            this.WEEKDAY_RATE = 100;
+                            this.WEEKEND_RATE = 40;
+                        }
+                    }
+                    catch (Exception)
+                    {
+                        throw new HotelReservationSystemException(HotelReservationSystemException.ExceptionType.INVALID_CUSTOMER_TYPE, "Invalid customer type");
+                    }
                 }
             }
             catch (HotelReservationSystemException)
